@@ -24,7 +24,7 @@ app.get("/test", (req, res) => {
 });
 app.get("/model-viewer", (req, res) => {
   //   res.render("model-viewer");
-  let modelPath = "/home/raju/Downloads/curve_plane.glb";
+  let modelPath = "models/curve_plane_output.glb";
   res.render("model-viewer", { modelPath });
 });
 app.use((req, res, next) => {
