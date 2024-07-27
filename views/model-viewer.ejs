@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLB Model Viewer</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add a container for the 3D scene -->
+    <div id="model-viewer" style="width: 100vw; height: 100vh"></div>
+
+    <!-- Include three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Include GLTFLoader from three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.js"></script>
+
+    <!-- Your custom script to load and display the GLB model -->
+    <script>
+      // Scene setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.getElementById("model-viewer").appendChild(renderer.domElement);
+
+      // Load GLB model
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        "<%= modelPath %>",
+        (gltf) => {
+          scene.add(gltf.scene);
+          gltf.scene.scale.set(1, 1, 1);
+          gltf.scene.position.set(0, 0, 0);
+          animate();
+        },
+        undefined,
+        (error) => {
+          console.error(error);
+        }
+      );
+
+      // Camera positioning
+      camera.position.z = 5;
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    </script>
+  </body>
+</html>
