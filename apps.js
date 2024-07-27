@@ -24,11 +24,11 @@ app.get("/test", (req, res) => {
 });
 app.get("/model-viewer", (req, res) => {
   //   res.render("model-viewer");
-  let modelPath = "models/curve_plane_output.glb";
+  let modelPath = "/home/raju/Downloads/curve_plane.glb";
   res.render("model-viewer", { modelPath });
 });
 app.use((req, res, next) => {
-  throw new HttpError("Can not find this route on SERVER", 404); //
+  throw new HttpError("Can not find this route on SERVER", 404);
 });
 app.use((error, req, res, next) => {
   return res

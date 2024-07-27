@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/rajujnvgupta/animation#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "moment-timezone": "^0.5.45",
     "multer": "^1.4.5-lts.1"
   }
 }
