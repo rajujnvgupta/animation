@@ -11,8 +11,11 @@ http://localhost:8003
 
 # ############################## API END POINT DOCUMENTATION ##################################################
 
- # (POST method) upload end point to upload fbx file on server to /public/models/   path
+ # (get method to render to upload page) 
 /upload
+
+# (POST method) upload end point to upload fbx file on server to /public/models/  path
+/upload/upload 
 
 # (GET method) convert fbx_file which is on path /public/models/ into glb then render to UI. GLB file path /public/export_glb
 /convert?fbxfile_name=Curved_Plane.fbx  //this for fbx to glb conversion api and then render
