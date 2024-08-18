@@ -1,5 +1,5 @@
 # animation
-Editing basic 3D model properties of a given file using blender python package
+Editing basic 3D model properties of a given fbx file using blender python  package and rendering glb 3D image on UI
 # dependency
     all dependency are there in package.json file
 # start server command
